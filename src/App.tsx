@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Todo } from './components/Todo';
 import './App.css'
+import { Form } from './components/Form';
 
 function App() {
 
@@ -34,6 +35,7 @@ const [todoList, setTodoList] = useState<Array<TodoType>>([
   return (
     <>
     <h2>Todo List - TS</h2>
+    <Form />
       <ul>
         <Todo todoData={todoList} />
       </ul>
