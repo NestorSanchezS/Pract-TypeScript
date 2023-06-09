@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Todo } from './components/Todo';
 import './App.css'
 
 function App() {
@@ -32,15 +33,9 @@ const [todoList, setTodoList] = useState<Array<TodoType>>([
 ])
   return (
     <>
+    <h2>Todo List - TS</h2>
       <ul>
-        {
-          todoList.map((todo) => (
-            <li key={todo.id}>
-              <h3>{todo.text}</h3> 
-              <p>{todo.date}</p>
-            </li>
-           ))
-        }
+        <Todo todoData={todoList} />
       </ul>
     </>
   )
