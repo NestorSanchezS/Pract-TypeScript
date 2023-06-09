@@ -2,16 +2,10 @@ import { useState } from 'react'
 import { Todo } from './components/Todo';
 import './App.css'
 import { Form } from './components/Form';
+import { TodoType } from './types/types';
 
 function App() {
 
-interface TodoType {
-  id: number;
-  text: string;
-  date: string;
-  isDone: boolean;
-}
-  
 const [todoList, setTodoList] = useState<Array<TodoType>>([
   {
     id: 1,

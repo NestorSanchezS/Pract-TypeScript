@@ -1,10 +1,21 @@
-
+import { useState } from 'react';
 
 export const Form = () => {
+    const [todoText, setTodoText] = useState<string>("")
+
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+    }
+
+    const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
+        setTodoText(e.currentTarget.value)
+    }
+
+    console.log(todoText)
   return (
-    <form>
-        <input type="text" name="newTodoText" />
-        <button type="submit" >Create Todo</button>
+    <form onSubmit={submitHandler}>
+        <input type="text" name="newTodoText" onChange={changeHandler} />
+        <button type="submit">Create Todo</button>
     </form>
   )
 }

@@ -1,9 +1,4 @@
-interface TodoType {
-  id: number;
-  text: string;
-  date: string;
-  isDone: boolean;
-}
+import { TodoType } from "../types/types"
 
 interface TodoProps {
     todoData: Array<TodoType>
