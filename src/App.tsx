@@ -7,7 +7,7 @@ import './App.css'
 
 
 
-const todosReducer = (state: Array<TodoType>, action: TodoAction) => {
+const todosReducer = (state: Array<TodoType>, action: TodoAction): Array<TodoType> => {
   switch (action.type){
     case "ADD":
       return [
@@ -26,26 +26,27 @@ const todosReducer = (state: Array<TodoType>, action: TodoAction) => {
         if ( oneTodo.id === action.payload.id) {
           return oneTodo.isDone ? {...oneTodo, isDone: false} : {...oneTodo, isDone: true}
         }
+        return oneTodo;
       })
   }
 }
 
 function App() {
-  const INITIAL_STATE = [
+  const INITIAL_STATE: Array<TodoType>= [
     {
-      id: 1,
+      id: "1",
       text: "Lo que sea mi paisano",
       date: new Date().toLocaleDateString(),
       isDone: false,
     },
     {
-      id: 2,
+      id:" 2",
       text: "Pa las que sea",
       date: new Date().toLocaleDateString(),
       isDone: false,
     },
     {
-      id: 3,
+      id: "3",
       text: "Como fué como fué",
       date: new Date().toLocaleDateString(),
       isDone: false,
