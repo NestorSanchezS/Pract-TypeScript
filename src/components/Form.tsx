@@ -11,7 +11,6 @@ export const Form = () => {
         setTodoText(e.currentTarget.value)
     }
 
-    console.log(todoText)
   return (
     <form onSubmit={submitHandler}>
         <input type="text" name="newTodoText" onChange={changeHandler} />
