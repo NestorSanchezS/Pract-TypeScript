@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react'
+import { useReducer } from 'react'
 import {v4 as uuidv4} from "uuid";
 import { Todo } from './components/Todo';
 import { Form } from './components/Form';
@@ -53,27 +53,6 @@ function App() {
     }
   ]
 
-const [todoList, setTodoList] = useState<Array<TodoType>>([
-  {
-    id: "1",
-    text: "Lo que sea mi paisano",
-    date: new Date().toLocaleDateString(),
-    isDone: false,
-  },
-  {
-    id: "2",
-    text: "Pa las que sea",
-    date: new Date().toLocaleDateString(),
-    isDone: false,
-  },
-  {
-    id: "3",
-    text: "Como fué como fué",
-    date: new Date().toLocaleDateString(),
-    isDone: false,
-  }
-]);
-
 const [todos, dispatch] = useReducer(todosReducer, INITIAL_STATE);
 
 console.log(todos)
@@ -87,7 +66,7 @@ console.log(todos)
     <h2>Todo List - TS</h2>
     <Form />
       <ul>
-        <Todo todoData={todoList} />
+        <Todo todoData={todos} />
       </ul>
     </>
   )
