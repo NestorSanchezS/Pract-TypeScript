@@ -1,4 +1,3 @@
-
 import { Todo } from './components/Todo';
 import { Form } from './components/Form';
 import './App.css';
@@ -7,17 +6,24 @@ import './App.css';
 import { useTodoHook } from './hooks/useTodoHook';
 
 
+
 function App() {
 
-const [todos, dispatch] = useTodoHook()
+const [todos, dispatch] = useTodoHook();
+
+const createTodo = (newTodoText: string): void => {
+  dispatch({
+    type: "ADD",
+    payload: {
+      text: newTodoText
+    }
+  })
+}
 
   return (
     <>
-    <button type="button" onClick={()=> dispatch({type: "ADD", payload: {
-      text: "La mondá pelua njda!"
-    } })}>Add TODO</button>
     <h2>Todo List - TS</h2>
-    <Form />
+    <Form createTodo={createTodo} />
       <ul>
         <Todo todoData={todos} />
       </ul>

@@ -1,10 +1,16 @@
 import { useState } from 'react';
 
-export const Form = () => {
+interface TodoProps {
+  createTodo: (text: string ) => void;
+}
+
+export const Form = ({createTodo}: TodoProps) => {
+
     const [todoText, setTodoText] = useState<string>("")
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        createTodo(todoText)
     }
 
     const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
