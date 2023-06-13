@@ -1,16 +1,19 @@
 import { useState } from 'react';
 
 interface TodoProps {
-  createTodo: (text: string ) => void;
+  createTodoHandler: (text: string ) => void;
 }
 
-export const Form = ({createTodo}: TodoProps) => {
+export const Form = ({createTodoHandler}: TodoProps) => {
 
     const [todoText, setTodoText] = useState<string>("")
 
     const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        createTodo(todoText)
+        if(todoText === "") return;
+        createTodoHandler(todoText)
+        e.currentTarget.reset();
+        setTodoText("")
     }
 
     const changeHandler = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -20,7 +23,7 @@ export const Form = ({createTodo}: TodoProps) => {
   return (
     <form onSubmit={submitHandler}>
         <input type="text" name="newTodoText" onChange={changeHandler} />
-        <button type="submit">Create Todo</button>
+        <button type="submit" disabled={!todoText}>Create Todo</button>
     </form>
   )
 }

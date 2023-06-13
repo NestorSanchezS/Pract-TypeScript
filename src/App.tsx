@@ -11,7 +11,7 @@ function App() {
 
 const [todos, dispatch] = useTodoHook();
 
-const createTodo = (newTodoText: string): void => {
+const createTodoHandler = (newTodoText: string): void => {
   dispatch({
     type: "ADD",
     payload: {
@@ -20,12 +20,21 @@ const createTodo = (newTodoText: string): void => {
   })
 }
 
+const deleteTodoHandler = (id: string): void => {
+  dispatch({
+    type: "DELETE",
+    payload: {
+      id: id
+    }
+  })
+}
+
   return (
     <>
     <h2>Todo List - TS</h2>
-    <Form createTodo={createTodo} />
+    <Form createTodoHandler={createTodoHandler} />
       <ul>
-        <Todo todoData={todos} />
+        <Todo todoData={todos}  deleteTodoHandler={deleteTodoHandler} />
       </ul>
     </>
   )

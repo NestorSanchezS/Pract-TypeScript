@@ -15,7 +15,7 @@ const todosReducer = (state: Array<TodoType>, action: TodoAction): Array<TodoTyp
           },
         ];
       case "DELETE":
-        return state.filter(oneTodo => oneTodo.id === action.payload.id);
+        return state.filter(oneTodo => oneTodo.id !== action.payload.id);
       case "UPDATE":
         return state.map(oneTodo => {
           if ( oneTodo.id === action.payload.id) {
