@@ -20,21 +20,29 @@ const createTodoHandler = (newTodoText: string): void => {
   })
 }
 
-const deleteTodoHandler = (id: string): void => {
+
+const updateOrDeleteTodoHandler = (id: string, isDone?: boolean): void => {
+  if (isDone !== undefined) {
+      return dispatch({
+          type: "UPDATE",
+          payload: { id },
+      });
+  }
+
   dispatch({
-    type: "DELETE",
-    payload: {
-      id: id
-    }
-  })
-}
+      type: "DELETE",
+      payload: { id },
+  });
+};
+
+
 
   return (
     <>
     <h2>Todo List - TS</h2>
     <Form createTodoHandler={createTodoHandler} />
       <ul>
-        <Todo todoData={todos}  deleteTodoHandler={deleteTodoHandler} />
+        <Todo todoData={todos}  updateOrDeleteTodoHandler={updateOrDeleteTodoHandler} />
       </ul>
     </>
   )

@@ -14,8 +14,13 @@ export interface TodoType {
       text: string;
     }
   } | {
-    type: "DELETE" | "UPDATE",
+    type: "DELETE",
     payload: {
       id:string;
+    }
+  } | {
+    type: "UPDATE",
+    payload: {
+      text:string;
     }
   }
